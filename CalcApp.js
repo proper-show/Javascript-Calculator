@@ -9,7 +9,6 @@ class Calculator {
         
         display(data) {
             displayArea.textContent = data
-            
         }
         
         clear() {
@@ -18,12 +17,15 @@ class Calculator {
             this.sum = ''
             this.currentOperator = ''
             this.display(this.currentData)
+            decimalDisable = false
         }
 
         createNumber(number) {
             this.currentData += number
             if(this.currentData.includes('.')) {
                 decimalDisable = true
+            } else {
+                decimalDisable = false
             }
                 this.display(this.currentData)
            
