@@ -4,7 +4,6 @@ class Calculator {
         this.previousData = ''
         this.sum = ''
         this.currentOperator = ''
-
         }
         
         display(data) {
@@ -18,6 +17,7 @@ class Calculator {
             this.currentOperator = ''
             this.display(this.currentData)
             decimalDisable = false
+            console.log()
         }
 
         createNumber(number) {
@@ -28,14 +28,12 @@ class Calculator {
                 decimalDisable = false
             }
                 this.display(this.currentData)
-           
         }
 
         plusMinus() {
             if (typeof this.previousData === 'number') {
                 this.previousData = this.previousData * -1
                 this.display(this.previousData)
-
             } else {
                 this.currentData = this.currentData * -1
                 this.display(this.currentData)
@@ -47,12 +45,10 @@ class Calculator {
             if (typeof this.previousData === 'number') {
                 this.previousData = this.previousData / 100
                 this.display(this.previousData)
-
             } else {
                 this.currentData = this.currentData / 100
                 this.display(this.currentData)
             } 
-        
         }
 
         createOperator(operator) {
@@ -73,60 +69,54 @@ class Calculator {
             if (!this.previousData) {
                 this.previousData = this.currentData
                 this.currentData = ''
-
             } else {
                 this.currentData = ''
             }
-       
         }
 
         calculate() {
-            let currentData = Number(this.currentData)
-            let previousData = Number(this.previousData)
+            let currentData = new Big(Number(this.currentData))
+            let previousData = new Big(Number(this.previousData))
 
             if(this.currentOperator) {
-
                 if(this.currentData && this.previousData != NaN) {
                     switch(this.currentOperator) {
                         case "/": 
-                            this.sum = previousData / currentData
+                            this.sum = previousData.div(currentData).valueOf()
                             break;
                         case "*":
-                            this.sum = previousData * currentData
-                            break
+                            this.sum = previousData.times(currentData).valueOf()
+                            break;
                         case "-":
-                            this.sum = previousData - currentData
+                            this.sum = previousData.minus(currentData).valueOf()
                             break;
                         case "+":
-                            this.sum = previousData + currentData
+                            this.sum = previousData.plus(currentData).valueOf()
                             break;
-
-                        }       
+                        }      
                         this.previousData = this.sum
                         this.sum = ''
                         this.display(this.previousData)
-                        
                 } else {
                     this.currentData = this.previousData
-
                     switch(this.currentOperator) {
                         case "/": 
-                            this.sum = previousData / previousData
+                            this.sum = previousData.div(previousData).valueOf()
                             break;
                         case "*":
-                            this.sum = previousData * previousData
+                            this.sum = previousData.times(previousData).valueOf()
                             break
                         case "-":
-                            this.sum = previousData - previousData
+                            this.sum = previousData.minus(previousData).valueOf()
                             break;
                         case "+":
-                            this.sum = previousData + previousData
+                            this.sum = previousData.plus(previousData).valueOf()
                             break;
-                    }
+                    }    
                     this.previousData = this.sum
                     this.sum = ''
                     this.display(this.previousData)
-                }
+                }     
             } else {
                 this.display(this.currentData)
             }
@@ -149,7 +139,7 @@ const calculator = new Calculator()
 
 numButtons.forEach((button) => {
     button.addEventListener('click', () => {
-        calculator.createNumber(button.innerText) 
+        calculator.createNumber(button.innerText)
     })
 })
 
