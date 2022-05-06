@@ -8,6 +8,8 @@ class Calculator {
         
         display(data) {
             displayArea.textContent = data
+            console.log('current:', this.currentData)
+            console.log('previous:', this.previousData)
         }
         
         clear() {
@@ -17,7 +19,6 @@ class Calculator {
             this.currentOperator = ''
             this.display(this.currentData)
             decimalDisable = false
-            console.log()
         }
 
         createNumber(number) {
@@ -31,22 +32,22 @@ class Calculator {
         }
 
         plusMinus() {
-            if (typeof this.previousData === 'number') {
-                this.previousData = this.previousData * -1
+            if (this.previousData) {
+                this.previousData = Big(this.previousData).times(-1).valueOf()
                 this.display(this.previousData)
             } else {
-                this.currentData = this.currentData * -1
+                this.currentData = Big(this.currentData).times(-1).valueOf()
                 this.display(this.currentData)
             } 
         }
         
 
         percent() {
-            if (typeof this.previousData === 'number') {
-                this.previousData = this.previousData / 100
+            if (this.previousData) {
+                this.previousData = Big(this.previousData).div(100).valueOf()
                 this.display(this.previousData)
             } else {
-                this.currentData = this.currentData / 100
+                this.currentData = Big(this.currentData).div(100).valueOf()
                 this.display(this.currentData)
             } 
         }
@@ -94,7 +95,7 @@ class Calculator {
                             this.sum = previousData.plus(currentData).valueOf()
                             break;
                         }      
-                        this.previousData = this.sum
+                        this.previousData = Number(this.sum)
                         this.sum = ''
                         this.display(this.previousData)
                 } else {
@@ -113,7 +114,7 @@ class Calculator {
                             this.sum = previousData.plus(previousData).valueOf()
                             break;
                     }    
-                    this.previousData = this.sum
+                    this.previousData = Number(this.sum)
                     this.sum = ''
                     this.display(this.previousData)
                 }     
