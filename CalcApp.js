@@ -8,8 +8,6 @@ class Calculator {
         
         display(data) {
             displayArea.textContent = data
-            console.log('current:', this.currentData)
-            console.log('previous:', this.previousData)
         }
         
         clear() {
@@ -95,7 +93,7 @@ class Calculator {
                             this.sum = previousData.plus(currentData).valueOf()
                             break;
                         }      
-                        this.previousData = Number(this.sum)
+                        this.previousData = this.sum
                         this.sum = ''
                         this.display(this.previousData)
                 } else {
@@ -114,7 +112,7 @@ class Calculator {
                             this.sum = previousData.plus(previousData).valueOf()
                             break;
                     }    
-                    this.previousData = Number(this.sum)
+                    this.previousData = this.sum
                     this.sum = ''
                     this.display(this.previousData)
                 }     
