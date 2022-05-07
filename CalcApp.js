@@ -51,20 +51,8 @@ class Calculator {
         }
 
         createOperator(operator) {
-                switch (operator) {
-                    case "/": 
-                        this.currentOperator = '/'
-                        break;
-                    case "*":
-                        this.currentOperator = '*'
-                        break
-                    case "-":
-                        this.currentOperator = '-'
-                        break;
-                    case "+":
-                        this.currentOperator = '+'
-                        break;
-                }
+            this.currentOperator = operator
+        
             if (!this.previousData) {
                 this.previousData = this.currentData
                 this.currentData = ''
@@ -120,7 +108,8 @@ class Calculator {
                 this.display(this.currentData)
             }
         }
-}
+    }
+
 
 
 
