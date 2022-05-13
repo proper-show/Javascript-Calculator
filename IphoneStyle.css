@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-family: 'Roboto', helvetica;
+}
+
+.wrapper {
+   display: flex;
+   flex-direction: column;
+   padding: 0 0 0 2rem;
+}
+
+.display {
+    height: 7rem;
+    width: 290px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0 2.5rem 0;
+}
+
+#displaytext {
+    font-size: 4rem;
+    margin: 4rem 1rem 0 0;
+}
+
+.number-pad {
+    height: 4rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1em);
+    grid-auto-rows: 1rem;
+    gap: 3.7rem;
+}
+
+.keypad{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 4rem ;
+    height: 4rem;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.var1 {
+    background-color: rgb(134, 134, 134);
+    color:rgb(4, 4, 4);
+    font-size: 1.5rem;
+}
+
+.var1:active {
+    background-color: rgb(233, 233, 233);
+}
+
+.var2 {
+    background-color: rgba(255, 166, 0, 0.886);
+}
+
+.var2:active {
+    background-color: rgba(255, 201, 100, 0.886);
+}
+
+.var3 {
+    background-color: rgb(33, 33, 33);
+}
+
+.var3:active {
+    background-color: rgb(79, 79, 79);
+    transition: all .2s cubic-bezier(1, 1, 1, 1);
+}
+
+.zero-div {
+    justify-content: start;
+    grid-column: 1 / 3;
+    width: 8.8rem;
+    border-radius: 32px;
+    
+}
+
+.zero-div p {
+    padding: 1.4rem;
+}
+
